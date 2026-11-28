@@ -76,7 +76,7 @@ public class PaimonStatsExtractor {
    * @param internalSchema the schema to report the stats in
    * @return the stats layout of the files written with {@code fileSchema}
    */
-  public StatsLayout getStatsLayout(TableSchema fileSchema, InternalSchema internalSchema) {
+  StatsLayout getStatsLayout(TableSchema fileSchema, InternalSchema internalSchema) {
     Map<Integer, InternalField> fieldsById = getFieldsById(internalSchema);
     Map<Integer, InternalField> fileFieldsById =
         getFieldsById(schemaExtractor.toInternalSchema(fileSchema));
@@ -100,7 +100,7 @@ public class PaimonStatsExtractor {
    * @param statsLayout the stats layout of the schema the data file was written with
    * @return the column stats
    */
-  public List<ColumnStat> extractColumnStats(DataFileMeta file, StatsLayout statsLayout) {
+  List<ColumnStat> extractColumnStats(DataFileMeta file, StatsLayout statsLayout) {
     List<ColumnStat> columnStats = new ArrayList<>();
 
     // stats for all columns are present in valueStats, we can safely ignore file.keyStats()
@@ -269,7 +269,7 @@ public class PaimonStatsExtractor {
 
   /** The stats layout of the data files written with one schema. */
   @Value
-  public static class StatsLayout {
+  static class StatsLayout {
     /**
      * The column names of the schema in order, which the stats follow when the file does not list
      * the columns it has stats for.

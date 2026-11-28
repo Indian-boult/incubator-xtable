@@ -81,7 +81,7 @@ public class PaimonDataFileExtractor {
    *     schema the data file was written with is added if it is missing
    * @return InternalDataFile representation
    */
-  public InternalDataFile toInternalDataFile(
+  InternalDataFile toInternalDataFile(
       FileStoreTable table,
       ManifestEntry entry,
       InternalSchema internalSchema,
